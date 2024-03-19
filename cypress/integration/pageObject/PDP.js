@@ -12,7 +12,9 @@ class PDP{
         return cy.contains('Check');
     }
     ValidatingEnteredPincode(){
-        return cy.contains('Delivering to');
+        return pdPage.ValidatingEnteredPincode().should('be.visible').then(() => {
+            pdPage.ChangeButton().click();
+        });;
     }
     ChangeButton(){
         return cy.get('button.changeLabelText');
