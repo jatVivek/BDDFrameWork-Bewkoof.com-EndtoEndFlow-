@@ -6,11 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": true,
+      "output": "cypress/cucumberReports/results.json"
+    }
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@cypress/browserify-preprocessor": "^3.0.2",
-    "cypress": "^13.6.6"
+    "cypress": "^13.6.6",
+    "multiple-cucumber-html-reporter": "^3.6.2"
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.0.2"

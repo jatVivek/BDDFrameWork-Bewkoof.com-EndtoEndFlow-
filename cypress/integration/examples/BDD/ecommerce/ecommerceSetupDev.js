@@ -7,13 +7,21 @@ Given("I open Bewkoof shoping Website", function () {
 // Search product category
 When('Search product category', () => {
     cy.wait(4000)
-    cy.get('.wzrk-alert').within(() => {
-        cy.get('#wzrk-cancel').click(); // Click the wzrk-cancel button
+    function handleWzrkAlert() {
+        cy.get('.wzrk-alert').then(($alert) => {
+            if ($alert.length > 0) {
+                cy.get('.wzrk-alert').within(() => {
+                    cy.get('#wzrk-cancel').click(); 
+                });
+            } else {
+                cy.get('.searchInput').type('t-shirt');
+                cy.wait(4000);
+                cy.contains('Men').click();
+            }
+            handleWzrkAlert();
+        });
+    }
     });
-    cy.get('.searchInput').type('t-shirt');
-    cy.wait(4000);
-    cy.contains('Men').click();
-});
 
 // Navigate to PLP
 When('Navigate to PLP', () => {
